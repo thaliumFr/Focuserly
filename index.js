@@ -13,8 +13,25 @@ function loadSettings() {
 	);
 }
 
+function verifyWord(_word) {
+	const startsWith = ["<", "class=", "id=", "datetime=", "aria-label="];
+	const endsWith = [">"];
+
+	startsWith.forEach((element) => {
+		if (_word.startsWith(element)) {
+			return false;
+		}
+	});
+	endsWith.forEach((element) => {
+		if (_word.endsWith(element)) {
+			return false;
+		}
+	});
+	return true;
+}
+
 function boldWord(_word) {
-	if (_word.startsWith("<") || _word.endsWith(">")) {
+	if (!verifyWord(_word)) {
 		return _word;
 	}
 	const length = _word?.length;
@@ -43,8 +60,8 @@ function BoldAllText(_text) {
 	}
 }
 
-async function letsBold() {
-	setTimeout(async () => {
+function letsBold() {
+	setTimeout(() => {
 		if (settings.enabled) {
 			console.log("bolderizing...");
 			const text = document.querySelectorAll("[id^='message-content']");
@@ -64,5 +81,4 @@ function Start() {
 	letsBold();
 }
 
-
-Start()
+Start();

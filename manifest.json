@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "ReadFaster",
 	"description": "Should make the first half of each words bold so it's easier to read",
-	"version": "0.12",
+	"version": "0.13",
 	"permissions": ["storage"],
 	"options_page": "settings.html",
 	"content_scripts": [
