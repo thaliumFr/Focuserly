@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>bolderize settings</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="settings">
+			<h1>Bolderize Settings (beta)</h1>
+
+			<div class="list">
+				<div class="element">
+					<label for="delay">Enabled</label>
+					<input type="checkbox" id="enabled" />
+				</div>
+				<div class="element">
+					<label for="delay">Refresh delay (250ms - 1000ms)</label>
+					<input type="range" min="250" max="1000" id="delay" />
+				</div>
+				<button type="submit" id="save" class="element">Save</button>
+				<p id="status"></p>
+			</div>
+		</div>
+		<script src="settings.js"></script>
+	</body>
+</html>

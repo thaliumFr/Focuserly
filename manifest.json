@@ -1,0 +1,16 @@
+{
+	"manifest_version": 3,
+	"name": "ReadFaster",
+	"description": "Should make the first half of each words bold so it's easier to read",
+	"version": "0.11",
+	"permissions": ["storage"],
+	"options_page": "settings.html",
+	"content_scripts": [
+		{
+			"matches": ["https://discord.com/channels/*"],
+			"all_frames": true,
+			"js": ["index.js"],
+			"run_at": "document_end"
+		}
+	]
+}
