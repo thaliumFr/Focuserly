@@ -14,20 +14,35 @@ function loadSettings() {
 }
 
 function verifyWord(_word) {
-	const startsWith = ["<", "class=", "id=", "datetime=", "aria-label="];
+	const startsWith = [
+		"<",
+		"class=",
+		"id=",
+		"datetime=",
+		"aria-label=",
+		"role=",
+		"tabindex=",
+		"src=",
+		"alt=",
+		"draggable=",
+		"data-type=",
+		"data-id=",
+		"data-name=",
+	];
 	const endsWith = [">"];
 
+	var result = true;
 	startsWith.forEach((element) => {
 		if (_word.startsWith(element)) {
-			return false;
+			result = false;
 		}
 	});
 	endsWith.forEach((element) => {
 		if (_word.endsWith(element)) {
-			return false;
+			result = false;
 		}
 	});
-	return true;
+	return result;
 }
 
 function boldWord(_word) {
@@ -42,8 +57,7 @@ function boldWord(_word) {
 }
 
 function boldText(_text) {
-	if (_text.startsWith("<")) return _text;
-	const words = _text.split(" ");
+	const words = _text.split(/ /);
 	var result = "";
 	words.forEach((word) => {
 		result += boldWord(word) + " ";
@@ -52,11 +66,12 @@ function boldText(_text) {
 }
 
 function BoldAllText(_text) {
-	console.log(_text.lenght);
 	for (let i = 0; i < _text.length; i++) {
 		const element = _text[i];
-		console.log(element.innerHTML);
-		element.innerHTML = boldText(element.innerHTML);
+		const boldedText = boldText(element.innerHTML);
+		if (element.innerHTML != boldedText) {
+			element.innerHTML = boldedText;
+		}
 	}
 }
 
