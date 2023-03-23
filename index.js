@@ -20,6 +20,7 @@ function verifyWord(_word) {
 		"id=",
 		"datetime=",
 		"aria-label=",
+		"aria-expanded=",
 		"role=",
 		"tabindex=",
 		"src=",
@@ -28,9 +29,14 @@ function verifyWord(_word) {
 		"data-type=",
 		"data-id=",
 		"data-name=",
+		"href=",
+		"rel=",
+		"boopener=",
+		"target=",
+		"title=",
+		"wrapper-",
 	];
-	const endsWith = [">"];
-
+	const endsWith = [">", 'interactive"', 'jumboable"'];
 	var result = true;
 	startsWith.forEach((element) => {
 		if (_word.startsWith(element)) {
@@ -53,16 +59,17 @@ function boldWord(_word) {
 	const middle = Math.ceil(length / 2);
 	var s1 = _word?.slice(0, middle);
 	var s2 = _word?.slice(middle);
-	return "<strong>" + s1 + "</strong>" + s2;
+	if (s1 != "") return "<strong>" + s1 + "</strong>" + s2;
+	return _word;
 }
 
 function boldText(_text) {
 	const words = _text.split(/ /);
-	var result = "";
+	var result = [];
 	words.forEach((word) => {
-		result += boldWord(word) + " ";
+		result.push(boldWord(word));
 	});
-	return result;
+	return result.join(" ");
 }
 
 function BoldAllText(_text) {

@@ -1,8 +1,8 @@
 {
 	"manifest_version": 3,
-	"name": "ReadFaster",
+	"name": "Focuserly",
 	"description": "Should make the first half of each words bold so it's easier to read",
-	"version": "0.15",
+	"version": "1.0",
 	"permissions": ["storage"],
 	"options_page": "settings.html",
 	"content_scripts": [
