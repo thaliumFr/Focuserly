@@ -3,7 +3,7 @@
 	"name": "Focuserly",
 	"description": "Should make the first half of each words bold so it's easier to read",
 	"version": "1.2",
-	"permissions": ["storage", "tabs"],
+	"permissions": ["storage"],
 	"options_page": "settings.html",
 	"content_scripts": [
 		{
