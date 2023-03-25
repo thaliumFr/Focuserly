@@ -43,7 +43,6 @@ function BoldElement(element) {
 
 	if (element.innerHTML != result) {
 		element.innerHTML = result;
-		element.setAttribute("bolded", "true");
 	}
 }
 
@@ -66,11 +65,11 @@ async function letsBold() {
 
 			// if (currentTab.url.startsWith("https://discord.com"))
 			// 	elements = document.querySelectorAll(
-			// 		"div[id^='message-content-], a, p"
+			// 		"div[id^='message-content-'], a, p"
 			// 	);
 			// else elements = document.querySelectorAll("div, a, p, li");
 
-			elements = document.querySelectorAll("div, a, p, li");
+			elements = document.querySelectorAll("div[id^='message-content-'], a, p");
 
 			elements.forEach((text) => BoldElement(text));
 			if (settings.debug) console.timeEnd("bolderizing");
