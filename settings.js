@@ -4,16 +4,18 @@ const delaySlider = document.getElementById("delay");
 function save_options() {
 	var enabled = document.getElementById("enabled").checked;
 	var delay = document.getElementById("delay").value;
+	var debug = document.getElementById("debug").checked;
 	chrome.storage.sync.set(
 		{
 			enabled: enabled,
 			delay: delay,
+			debug: debug,
 		},
-		function () {
+		() => {
 			// Update status to let user know options were saved.
 			var status = document.getElementById("status");
 			status.textContent = "Options saved.";
-			setTimeout(function () {
+			setTimeout(() => {
 				status.textContent = "";
 			}, 1000);
 		}
@@ -28,10 +30,12 @@ function restore_options() {
 		{
 			enabled: true,
 			delay: 500,
+			debug: false,
 		},
-		function (items) {
+		(items) => {
 			document.getElementById("enabled").checked = items.enabled;
 			document.getElementById("delay").value = items.delay;
+			document.getElementById("debug").checked = items.debug;
 		}
 	);
 }
