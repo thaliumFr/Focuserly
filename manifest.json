@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Focuserly",
 	"description": "Should make the first half of each words bold so it's easier to read",
-	"version": "1.1",
+	"version": "1.2",
 	"permissions": ["storage", "tabs"],
 	"options_page": "settings.html",
 	"content_scripts": [

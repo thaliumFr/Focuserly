@@ -33,7 +33,7 @@ function boldText(_text) {
 }
 
 function BoldElement(element) {
-	if (element.getAttribute("bolded") == "true") return;
+	if (element.getAttribute("bolded")) return;
 	const content = element.innerHTML;
 	const text = element.innerText;
 
@@ -43,6 +43,7 @@ function BoldElement(element) {
 
 	if (element.innerHTML != result) {
 		element.innerHTML = result;
+		element.setAttribute("bolded", true);
 	}
 }
 
@@ -61,15 +62,9 @@ async function letsBold() {
 			if (settings.debug) console.time("bolderizing");
 			var elements = [];
 
-			//const currentTab = await getCurrentTab();
-
-			// if (currentTab.url.startsWith("https://discord.com"))
-			// 	elements = document.querySelectorAll(
-			// 		"div[id^='message-content-'], a, p"
-			// 	);
-			// else elements = document.querySelectorAll("div, a, p, li");
-
-			elements = document.querySelectorAll("div[id^='message-content-'], a, p");
+			if (location.href.startsWith("https://discord.com"))
+				elements = document.querySelectorAll("div[id^='message-content-']");
+			else elements = document.querySelectorAll("div, a, p, li");
 
 			elements.forEach((text) => BoldElement(text));
 			if (settings.debug) console.timeEnd("bolderizing");
